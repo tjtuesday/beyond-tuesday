@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Tuesday brand guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+  :root {
+    --navy: #172A45;
+    --navy-deep: #0F1C30;
+    --orange: #E85D04;
+    --white: #FFFFFF;
+    --slate: #5A6473;
+    --ink-2: #3B4656;
+    --fog: #ECEEF0;
+    --tint: #FDEFE6;
+    --rule: #D5DAE1;
+    --nav-w: 240px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--navy);
+    font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); }
+  a:hover { color: var(--orange); }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+  .layout { display: grid; grid-template-columns: var(--nav-w) minmax(0, 1fr); min-height: 100vh; }
+
+  nav.toc {
+    position: sticky; top: 0; height: 100vh;
+    padding: 36px 28px; border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .toc-brand { display: flex; flex-direction: column; gap: 4px; line-height: 1; text-decoration: none; }
+  .toc-brand .b { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .toc-brand .t { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; padding-left: 0.1em; }
+  .toc-brand:hover .b, .toc-brand:hover .t { color: var(--navy); }
+  nav.toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  nav.toc a { text-decoration: none; color: var(--slate); font-size: 15px; font-weight: 500; }
+  nav.toc a.is-current { color: var(--navy); font-weight: 700; }
+  nav.toc a:hover { color: var(--orange); }
+  .toc-foot { margin-top: auto; font-size: 13px; color: var(--slate); line-height: 1.5; }
+
+  main { min-width: 0; }
+
+  .hero {
+    background: var(--navy); color: var(--white);
+    padding: clamp(48px, 8vw, 96px) clamp(28px, 6vw, 80px);
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .wordmark { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.22em; line-height: 1; white-space: nowrap; }
+  .wordmark .b { font-weight: 800; letter-spacing: -0.02em; }
+  .wordmark .t { font-weight: 500; letter-spacing: 0.02em; }
+  .hero .wordmark { font-size: clamp(40px, 8vw, 104px); }
+  .hero .bar { width: 120px; height: 8px; border-radius: 4px; background: var(--orange); }
+  .hero h1 { margin: 0; font-size: clamp(24px, 3vw, 36px); font-weight: 500; line-height: 1.2; }
+  .hero p { margin: 0; max-width: 56ch; color: #C9D1DC; font-size: 17px; }
+  .hero .meta { font-size: 14px; color: #C9D1DC; }
+
+  .content { padding: 24px clamp(28px, 6vw, 80px) 96px; max-width: 980px; }
+  section { padding-top: 72px; }
+  section + section { border-top: 1px solid var(--rule); margin-top: 72px; }
+  h2 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+  h3 { margin: 36px 0 10px; font-size: 20px; font-weight: 700; line-height: 1.3; }
+  p { margin: 0 0 14px; max-width: 64ch; text-wrap: pretty; }
+  .lead { font-size: 19px; color: var(--ink-2); max-width: 60ch; }
+  .muted { color: var(--slate); }
+  .small { font-size: 14px; line-height: 1.5; }
+
+  /* Logo placeholder */
+  .placeholder {
+    border: 2px dashed var(--orange); border-radius: 14px;
+    padding: 40px 32px; margin: 24px 0 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+    background: var(--tint);
+  }
+  .placeholder .tag { font-size: 14px; font-weight: 700; color: var(--orange); }
+  .lockup { display: flex; align-items: center; gap: 22px; }
+  .lockup svg { width: 88px; height: 88px; flex-shrink: 0; }
+  .lockup .wordmark { font-size: clamp(28px, 5vw, 48px); }
+
+  .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 8px; }
+  .rules div { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+  .rules strong { display: block; color: var(--navy); margin-bottom: 4px; }
+
+  /* Color */
+  .swatches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+  .swatch {
+    border: 0; border-radius: 14px; padding: 26px 28px; min-height: 196px;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
+    text-align: left; cursor: pointer; font: inherit; color: var(--white);
+    position: relative;
+  }
+  .swatch .name { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; line-height: 1; }
+  .swatch .vals { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; line-height: 1.5; margin-top: 28px; }
+  .swatch .vals span { display: block; font-weight: 700; }
+  .swatch .copied { position: absolute; top: 20px; right: 24px; font-size: 14px; font-weight: 600; opacity: 0; transition: opacity .2s; }
+  .swatch.show-copied .copied { opacity: 1; }
+  .swatch:focus-visible { outline-offset: 4px; }
+  .minor { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+  .minor button { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; font: inherit; color: var(--navy); display: flex; flex-direction: column; gap: 8px; }
+  .minor .chip { height: 56px; border-radius: 10px; width: 100%; position: relative; }
+  .minor .chip.outlined { border: 1px solid var(--rule); }
+  .minor .copied { position: absolute; right: 10px; top: 8px; font-size: 12px; font-weight: 600; color: var(--navy); opacity: 0; transition: opacity .2s; }
+  .minor button.show-copied .copied { opacity: 1; }
+  .minor .label { font-size: 14px; line-height: 1.45; }
+  .minor .label strong { font-weight: 700; }
+  .minor .label .hex { color: var(--slate); }
+  .minor .label .use { display: block; color: var(--slate); }
+
+  table { border-collapse: collapse; width: 100%; max-width: 720px; font-size: 15px; line-height: 1.45; margin-top: 12px; }
+  th { text-align: left; font-weight: 600; color: var(--slate); padding: 8px 0; border-bottom: 2px solid var(--navy); }
+  td { padding: 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th.num, td.num { text-align: right; padding-right: 20px; font-variant-numeric: tabular-nums; }
+  td.use { padding-left: 20px; }
+  th.use { padding-left: 20px; }
+
+  /* Type */
+  .specimen { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 36px; margin-top: 24px; align-items: start; }
+  .aa { background: var(--fog); border-radius: 14px; height: 220px; display: flex; align-items: center; justify-content: center; font-size: 140px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .roles { display: flex; flex-direction: column; }
+  .role { padding: 18px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
+  .role:last-child { border-bottom: 0; }
+  .role .spec { font-size: 13px; color: var(--slate); }
+  .role .display { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .role .headline { font-size: 32px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
+  .role .body { font-size: 17px; line-height: 1.6; max-width: 60ch; }
+  .role .label { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Voice */
+  .voice { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; margin-top: 24px; align-items: start; }
+  .voice dl { margin: 0; display: flex; flex-direction: column; gap: 18px; }
+  .voice dt { font-size: 19px; font-weight: 700; line-height: 1.3; }
+  .voice dd { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+  .pair { display: flex; flex-direction: column; gap: 14px; }
+  .pair div { border-radius: 14px; padding: 22px 26px; }
+  .pair .before { background: var(--fog); color: var(--ink-2); }
+  .pair .after { background: var(--tint); }
+  .pair .k { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .pair .before .k { color: var(--slate); }
+  .pair .after .k { color: var(--orange); }
+
+  /* In use */
+  .uses { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
+  .caption { font-size: 14px; color: var(--slate); margin-top: 8px; }
+  .logo-slot { border: 2px dashed rgba(255,255,255,.55); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .logo-slot.dark { border-color: var(--rule); color: var(--slate); }
+  .tile { background: var(--navy); color: var(--white); border-radius: 14px; width: 300px; height: 300px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+  .tile .logo-slot { width: 64px; height: 64px; }
+  .tile .line { font-size: 30px; font-weight: 800; line-height: 1.05; letter-spacing: -0.01em; }
+  .tile .bar { width: 48px; height: 6px; border-radius: 3px; background: var(--orange); margin: 12px 0; }
+  .tile .wordmark { font-size: 14px; letter-spacing: 0.02em; }
+  .stack { display: flex; flex-direction: column; gap: 28px; }
+  .email { border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+  .email .head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 3px solid var(--orange); }
+  .email .head .left { display: flex; align-items: center; gap: 12px; }
+  .email .logo-slot { width: 36px; height: 36px; font-size: 9px; }
+  .email .wordmark { font-size: 20px; }
+  .email .issue { font-size: 14px; color: var(--slate); }
+  .email .bodyc { padding: 20px 24px; }
+  .email .bodyc h4 { margin: 0 0 6px; font-size: 20px; font-weight: 700; line-height: 1.25; }
+  .email .bodyc p { margin: 0; font-size: 15px; color: var(--ink-2); max-width: 52ch; }
+  .slide { border: 1px solid var(--rule); border-radius: 14px; padding: 32px 36px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  .slide .kicker { font-size: 14px; font-weight: 600; color: var(--orange); margin-bottom: 12px; }
+  .slide .big { font-size: clamp(32px, 4vw, 44px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+  .slide .bar { width: 72px; height: 6px; border-radius: 3px; background: var(--orange); margin-top: 16px; }
+  .slide .foot { display: flex; justify-content: space-between; align-items: flex-end; font-size: 14px; color: var(--slate); }
+  .slide .logo-slot { width: 36px; height: 36px; font-size: 9px; }
+
+  footer.end { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--slate); line-height: 1.6; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { position: sticky; height: auto; padding: 14px 20px; border-right: 0; border-bottom: 1px solid var(--rule); background: var(--white); flex-direction: row; align-items: center; gap: 20px; z-index: 2; }
+    nav.toc ul { flex-direction: row; gap: 16px; overflow-x: auto; padding-bottom: 2px; }
+    nav.toc a { white-space: nowrap; }
+    .toc-foot { display: none; }
+    .rules, .swatches, .specimen, .voice, .uses { grid-template-columns: 1fr; }
+    .minor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile { width: 100%; max-width: 340px; }
+    .aa { height: 160px; font-size: 100px; }
+    section { padding-top: 48px; }
+    section + section { margin-top: 48px; }
+  }
+
+  @media print {
+    body { font-size: 12pt; }
+    .layout { display: block; }
+    nav.toc { display: none; }
+    .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .swatch, .chip, .tile, .pair div, .aa, .placeholder { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    section { break-before: page; padding-top: 24pt; }
+    section:first-of-type { break-before: auto; }
+    .content { max-width: none; padding: 0 0.25in; }
+    .copied { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc" aria-label="Sections">
+    <a class="toc-brand" href="#top" aria-label="Beyond Tuesday, back to top">
+      <span class="b">BEYOND</span>
+      <span class="t">TUESDAY</span>
+    </a>
+    <ul>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#color">Color</a></li>
+      <li><a href="#type">Typography</a></li>
+      <li><a href="#voice">Voice</a></li>
+      <li><a href="#use">In use</a></li>
+    </ul>
+    <div class="toc-foot">Version 1.0<br>October 2026</div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wordmark" aria-label="Beyond Tuesday"><span class="b">BEYOND</span><span class="t">TUESDAY</span></div>
+      <div class="bar" aria-hidden="true"></div>
+      <h1>Brand guide</h1>
+      <p>[One sentence on what Beyond Tuesday is and who it is for.]</p>
+      <div class="meta">Version 1.0, October 2026. The logo in this guide is a placeholder.</div>
+    </header>
+
+    <div class="content">
+
+      <section id="logo">
+        <h2>Logo</h2>
+        <p class="lead">There is no final logo yet. The mark below is a stand-in so layouts can be built now. Keep it off anything that leaves the building.</p>
+
+        <div class="placeholder" aria-label="Placeholder logo">
+          <div class="lockup">
+            <svg viewBox="0 0 100 100" role="img" aria-label="Placeholder mark: a square with an arrow leaving through its right edge">
+              <path d="M 68 60 V 76 Q 68 84 60 84 H 20 Q 12 84 12 76 V 24 Q 12 16 20 16 H 60 Q 68 16 68 24 V 40" fill="none" stroke="#172A45" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M 36 50 H 92" fill="none" stroke="#E85D04" stroke-width="7" stroke-linecap="round"></path>
+              <path d="M 78 36 L 92 50 L 78 64" fill="none" stroke="#E85D04" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div class="wordmark" aria-hidden="true"><span class="b">BEYOND</span><span class="t">TUESDAY</span></div>
+          </div>
+          <div class="tag">Placeholder. Final mark to come.</div>
+        </div>
+
+        <h3>What will not change</h3>
+        <p>The name is set in Archivo, in caps. BEYOND is heavy. TUESDAY is lighter and tracked a little wider. That wordmark stands in for the logo until the real one lands, and it will stay part of the logo afterward.</p>
+
+        <div class="rules">
+          <div><strong>Clear space</strong>Leave room on every side equal to the height of the B. Nothing else goes inside that space.</div>
+          <div><strong>Minimum size</strong>140 pixels wide on screen. 1.25 inches in print. Smaller than that, use the name in running text instead.</div>
+          <div><strong>Color</strong>Navy on white. White on navy or orange. Never set the name in orange.</div>
+        </div>
+      </section>
+
+      <section id="color">
+        <h2>Color</h2>
+        <p class="lead">Two colors do the work. Navy carries the weight. Orange is the signal. Click any swatch to copy its hex code.</p>
+
+        <div class="swatches">
+          <button class="swatch" type="button" style="background:#172A45" data-hex="#172A45" aria-label="Navy, #172A45. Copy hex code">
+            <span class="name">Navy</span>
+            <span class="copied" aria-hidden="true">Copied</span>
+            <span class="vals">
+              <span class="v"><span>Hex</span>#172A45</span>
+              <span class="v"><span>RGB</span>23, 42, 69</span>
+              <span class="v"><span>CMYK</span>67, 39, 0, 73</span>
+            </span>
+          </button>
+          <button class="swatch" type="button" style="background:#E85D04" data-hex="#E85D04" aria-label="Orange, #E85D04. Copy hex code">
+            <span class="name">Orange</span>
+            <span class="copied" aria-hidden="true">Copied</span>
+            <span class="vals">
+              <span class="v"><span>Hex</span>#E85D04</span>
+              <span class="v"><span>RGB</span>232, 93, 4</span>
+              <span class="v"><span>CMYK</span>0, 60, 98, 9</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="minor">
+          <button type="button" data-hex="#FFFFFF" aria-label="White, #FFFFFF. Copy hex code">
+            <span class="chip outlined" style="background:#FFFFFF"><span class="copied">Copied</span></span>
+            <span class="label"><strong>White</strong> <span class="hex">#FFFFFF</span><span class="use">The ground. Most pages are white.</span></span>
+          </button>
+          <button type="button" data-hex="#5A6473" aria-label="Slate, #5A6473. Copy hex code">
+            <span class="chip" style="background:#5A6473"><span class="copied" style="color:#fff">Copied</span></span>
+            <span class="label"><strong>Slate</strong> <span class="hex">#5A6473</span><span class="use">Captions and secondary text.</span></span>
+          </button>
+          <button type="button" data-hex="#ECEEF0" aria-label="Fog, #ECEEF0. Copy hex code">
+            <span class="chip" style="background:#ECEEF0"><span class="copied">Copied</span></span>
+            <span class="label"><strong>Fog</strong> <span class="hex">#ECEEF0</span><span class="use">Panels, table rows, quiet backgrounds.</span></span>
+          </button>
+          <button type="button" data-hex="#FDEFE6" aria-label="Orange tint, #FDEFE6. Copy hex code">
+            <span class="chip" style="background:#FDEFE6"><span class="copied">Copied</span></span>
+            <span class="label"><strong>Orange tint</strong> <span class="hex">#FDEFE6</span><span class="use">Callouts and highlights. Use sparingly.</span></span>
+          </button>
+        </div>
+
+        <h3>How to use them</h3>
+        <p>Navy is for headlines, body text and anything structural. Orange is for one thing on a page: a rule, a highlighted line, a single number, the arrow. If a page has more than a little orange, it has too much.</p>
+        <p class="small muted">The CMYK values are conversions from the hex codes. Check them against a proof before a large print run.</p>
+
+        <h3>Contrast</h3>
+        <table>
+          <thead>
+            <tr><th>Pair</th><th class="num">Ratio</th><th class="use">Use for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Navy on white</td><td class="num">14.4:1</td><td class="use">Any text</td></tr>
+            <tr><td>White on navy</td><td class="num">14.4:1</td><td class="use">Any text</td></tr>
+            <tr><td>Slate on white</td><td class="num">6.0:1</td><td class="use">Any text</td></tr>
+            <tr><td>Orange on navy</td><td class="num">4.1:1</td><td class="use">Large text, rules and graphics</td></tr>
+            <tr><td>Orange on white</td><td class="num">3.5:1</td><td class="use">Large text and graphics only. Never body text.</td></tr>
+            <tr><td>White on orange</td><td class="num">3.5:1</td><td class="use">Large text only</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="type">
+        <h2>Typography</h2>
+        <p class="lead">One typeface, four jobs. Archivo is a plain grotesk with a wide stance. It holds up in heavy caps and stays readable small.</p>
+
+        <div class="specimen">
+          <div>
+            <div class="aa" aria-hidden="true">Aa</div>
+            <h3 style="margin-top:18px">Archivo</h3>
+            <p class="small">Free from Google Fonts, so it works in Canva, Google Docs and on the web without a license. Where Archivo is not available, use Helvetica or the system sans and keep the same weights and sizes.</p>
+            <p class="small"><a href="https://fonts.google.com/specimen/Archivo">Get Archivo on Google Fonts</a></p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="spec">Display. Weight 800, all caps, tracking minus 2 percent</div>
+              <div class="display">BEYOND TUESDAY</div>
+            </div>
+            <div class="role">
+              <div class="spec">Headline. Weight 700, sentence case</div>
+              <div class="headline">Certify on time. Here is how.</div>
+            </div>
+            <div class="role">
+              <div class="spec">Body. Weight 400, 17 pixels, line height 1.6</div>
+              <div class="body">Election Day ends. The work does not. Canvass, audit, certification and the questions that come with them all land in the weeks after Tuesday. This is where offices need a plan they can run.</div>
+            </div>
+            <div class="role">
+              <div class="spec">Label. Weight 600, 13 pixels, caps, tracking plus 12 percent</div>
+              <div class="label">Section label</div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:24px">Caps are for the wordmark, display lines and small labels. Everything else is sentence case. One size of bold per page is enough. Never set orange body text.</p>
+      </section>
+
+      <section id="voice">
+        <h2>Voice</h2>
+        <p class="lead">Say it plainly. Then stop.</p>
+
+        <div class="voice">
+          <dl>
+            <div><dt>Short declarative sentences.</dt><dd>One idea per sentence. If a sentence needs a comma to breathe, split it.</dd></div>
+            <div><dt>Plain words. No jargon.</dt><dd>Write for a busy reader who has not had lunch. Use the word an election official would use at the counter.</dd></div>
+            <div><dt>Say what to do, then why.</dt><dd>Lead with the action. The reasoning follows. Nobody has to hunt for the point.</dd></div>
+            <div><dt>AP style.</dt><dd>No Oxford comma. No em dashes. Numerals for 10 and up. Titles capitalized only before a name.</dd></div>
+            <div><dt>Sound like a person.</dt><dd>No stacked adjectives, no throat-clearing, no sentence that could open any press release.</dd></div>
+          </dl>
+          <div class="pair">
+            <div class="before"><span class="k">Instead of</span>Leverage post-election best practices and stakeholder alignment to optimize certification workflows and mitigate downstream risk.</div>
+            <div class="after"><span class="k">Write</span>Certify on time. Here is the checklist, who signs off and what to do when a number does not match.</div>
+            <p class="small muted" style="margin:4px 0 0">The name is two words in caps in the wordmark. In running text it is Beyond Tuesday. No all caps, no hyphen.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="use">
+        <h2>In use</h2>
+        <p class="lead">Three places the brand shows up. The dashed box is where the logo goes once there is one.</p>
+
+        <div class="uses">
+          <div>
+            <div class="tile">
+              <div class="logo-slot">Logo</div>
+              <div>
+                <div class="line">The polls close. The work starts.</div>
+                <div class="bar" aria-hidden="true"></div>
+                <div class="wordmark"><span class="b">BEYOND</span><span class="t">TUESDAY</span></div>
+              </div>
+            </div>
+            <div class="caption">Social tile</div>
+          </div>
+          <div class="stack">
+            <div>
+              <div class="email">
+                <div class="head">
+                  <div class="left">
+                    <div class="logo-slot dark">Logo</div>
+                    <div class="wordmark"><span class="b">BEYOND</span><span class="t">TUESDAY</span></div>
+                  </div>
+                  <div class="issue">November update</div>
+                </div>
+                <div class="bodyc">
+                  <h4>Three things to do before the canvass</h4>
+                  <p>Confirm who signs, confirm when they are free and confirm the room. The rest is paperwork.</p>
+                </div>
+              </div>
+              <div class="caption">Email header</div>
+            </div>
+            <div>
+              <div class="slide">
+                <div>
+                  <div class="kicker">Post-election planning</div>
+                  <div class="big">WHAT HAPPENS<br>WEDNESDAY</div>
+                  <div class="bar" aria-hidden="true"></div>
+                </div>
+                <div class="foot">
+                  <span>[Presenter name], [date]</span>
+                  <div class="logo-slot dark">Logo</div>
+                </div>
+              </div>
+              <div class="caption">Slide title</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="end">
+        Beyond Tuesday brand guide, version 1.0, October 2026. Questions: <a href="mailto:tj@readyfortuesday.com">tj@readyfortuesday.com</a>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  (function () {
+    // Copy a hex code when a swatch is clicked.
+    var buttons = document.querySelectorAll('[data-hex]');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      btn.addEventListener('click', function () {
+        var hex = btn.getAttribute('data-hex');
+        var done = function () {
+          btn.classList.add('show-copied');
+          window.setTimeout(function () { btn.classList.remove('show-copied'); }, 1400);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(hex).then(done, done);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = hex; ta.setAttribute('readonly', '');
+          ta.style.position = 'absolute'; ta.style.left = '-9999px';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta);
+          done();
+        }
+      });
+    });
+
+    // Mark the section in view in the side navigation.
+    var links = document.querySelectorAll('nav.toc ul a');
+    var map = {};
+    Array.prototype.forEach.call(links, function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      var current = null;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            if (current) current.classList.remove('is-current');
+            current = map[e.target.id];
+            if (current) current.classList.add('is-current');
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+      Object.keys(map).forEach(function (id) {
+        var s = document.getElementById(id);
+        if (s) io.observe(s);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
